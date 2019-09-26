@@ -74,7 +74,10 @@ export class ItemService {
    // Helpers
 
    getMaxId(){
-     return this.items.reduce((maxPrevItem, nextItem)=>  this.getItemFromId(Math.max(maxPrevItem.id, nextItem.id))).id;
+     if(this.items == null || this.items.length == 0)
+      return 1;
+     else
+      return this.items.reduce((maxPrevItem, nextItem)=>  this.getItemFromId(Math.max(maxPrevItem.id, nextItem.id))).id;
    }
 
    getItemFromId(id : number): Item {
